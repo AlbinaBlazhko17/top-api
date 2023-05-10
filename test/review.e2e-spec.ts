@@ -39,7 +39,16 @@ describe('AppController (e2e)', () => {
 			});
 	});
 
-	it('/review/:id (DELETE)', async () => {
+	it('/review/byProduct/:productId (GET)', async () => {
+		return request(app.getHttpServer())
+			.get('/review/byProduct/' + productId)
+			.expect(200)
+			.then(({ body }: request.Response) => {
+				expect(body.length).toBe(1);
+			});
+	});
+
+	it('/review/:id (DELETE)', () => {
 		return request(app.getHttpServer())
 			.delete('/review/' + createdId)
 			.expect(200);

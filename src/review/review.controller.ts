@@ -29,9 +29,9 @@ export class ReviewController {
 			throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
 	}
 
-	@Get('byProduct/:poductId')
+	@Get('byProduct/:productId')
 	async getByProduct(
-		@Param('poductId') poductId: string,
+		@Param('productId') poductId: string,
 	): Promise<ReviewModel[]> {
 		return this.reviewService.findByProductId(poductId);
 	}

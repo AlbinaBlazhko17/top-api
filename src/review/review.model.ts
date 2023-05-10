@@ -22,7 +22,7 @@ export class ReviewModel {
 	createdAt?: Date;
 
 	@Prop({ type: MSchema.Types.ObjectId, ref: ProductModel.name })
-	productId: ProductModel;
+	productId: Types.ObjectId;
 }
 
 export const ReviewModelSchema = SchemaFactory.createForClass(ReviewModel);
