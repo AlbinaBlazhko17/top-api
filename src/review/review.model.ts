@@ -1,6 +1,6 @@
 import { Prop, SchemaFactory, Schema } from '@nestjs/mongoose';
 import { HydratedDocument, Types, Schema as MSchema } from 'mongoose';
-import { ProductModel } from 'src/product/product.model';
+import { ProductModel } from '../product/product.model';
 
 export type ReviewModelDocument = HydratedDocument<ReviewModel>;
 

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TopPageController } from './top-page.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModel, AuthModelSchema } from 'src/auth/auth.model';
+import { AuthModel, AuthModelSchema } from '../auth/auth.model';
 
 @Module({
 	controllers: [TopPageController],
