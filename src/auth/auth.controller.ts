@@ -13,12 +13,9 @@ import { AuthDto } from './dto/auth.dto';
 import { AuthService } from './auth.service';
 import { ALREADY_REGISTERED_ERROR } from './auth.constants';
 
-@Injectable()
 @Controller('auth')
 export class AuthController {
-	constructor(
-		@Inject(AuthService.name) private readonly authService: AuthService,
-	) {}
+	constructor(private readonly authService: AuthService) {}
 	@UsePipes(new ValidationPipe())
 	@Post('register')
 	async register(@Body() dto: AuthDto) {
