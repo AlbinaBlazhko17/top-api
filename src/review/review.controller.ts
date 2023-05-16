@@ -16,6 +16,7 @@ import { ReviewService } from './review.service';
 import { ReviewModel } from './review.model';
 import { REVIEW_NOT_FOUND } from './review.constants';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+import { UserEmail } from 'src/decorators/user-email.decorator';
 
 @Controller('review')
 export class ReviewController {
@@ -35,6 +36,7 @@ export class ReviewController {
 			throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
 	}
 
+	@UseGuards(JwtAuthGuard)
 	@Get('byProduct/:productId')
 	async getByProduct(
 		@Param('productId') poductId: string,
