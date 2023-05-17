@@ -23,8 +23,8 @@ export class ProductController {
 	constructor(private readonly productService: ProductService) {}
 
 	@Post('create')
-	async create(@Body() dto: CreateProductDto): Promise<void> {
-		this.productService.create(dto);
+	async create(@Body() dto: CreateProductDto): Promise<ProductModel> {
+		return this.productService.create(dto);
 	}
 
 	@Get(':id')

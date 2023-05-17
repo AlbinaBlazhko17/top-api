@@ -21,8 +21,8 @@ export class ReviewModel {
 	@Prop()
 	createdAt?: Date;
 
-	@Prop({ type: MSchema.Types.ObjectId, ref: ProductModel.name })
-	productId: Types.ObjectId;
+	@Prop()
+	productId: MSchema.Types.ObjectId;
 }
 
 export const ReviewModelSchema = SchemaFactory.createForClass(ReviewModel);

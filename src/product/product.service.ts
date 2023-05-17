@@ -52,25 +52,29 @@ export class ProductService {
 				},
 				{
 					$lookup: {
-						from: 'Review',
+						from: 'reviewmodels',
 						localField: '_id',
 						foreignField: 'productId',
-						as: 'review',
+						as: 'reviews',
 					},
 				},
 				{
 					$addFields: {
-						reviewCount: { $size: '$review' },
-						reviewAvg: { $avg: '$review.rating' },
+						reviewCount: { $size: '$reviews' },
+						reviewAvg: { $avg: '$reviews.rating' },
+						reviews: {
+							$function: {
+								body: `function (reviews) {
+								reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+								return reviews;
+							}`,
+								args: ['$reviews'],
+								lang: 'js',
+							},
+						},
 					},
 				},
 			])
-			.exec() as Promise<
-			(ProductModel & {
-				review: ReviewModel[];
-				reviewCount: number;
-				reviewAvg: number;
-			})[]
-		>;
+			.exec();
 	}
 }
