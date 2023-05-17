@@ -46,7 +46,7 @@ export class ProductController {
 
 	@Patch(':id')
 	async patch(
-		@Param('id') id: string,
+		@Param('id', IdValidationPipe) id: string,
 		@Body() dto: ProductModel,
 	): Promise<ProductModel> {
 		const updatedProduct = await this.productService.updateById(id, dto);
