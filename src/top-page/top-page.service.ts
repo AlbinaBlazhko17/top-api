@@ -32,6 +32,14 @@ export class TopPageService {
 			.exec();
 	}
 
+	async findByText(text: string) {
+		return this.topPageModel
+			.find({
+				'$**': 'text',
+			})
+			.exec();
+	}
+
 	async deleteById(id: string): Promise<CreateTopPageDto | null> {
 		return this.topPageModel.findByIdAndRemove(id).exec();
 	}
