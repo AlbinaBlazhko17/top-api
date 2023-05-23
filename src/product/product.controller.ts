@@ -35,13 +35,10 @@ export class ProductController {
 	}
 
 	@Delete(':id')
-	async delete(
-		@Param('id', IdValidationPipe) id: string,
-	): Promise<ProductModel> {
+	async delete(@Param('id', IdValidationPipe) id: string): Promise<void> {
 		const deletedProduct = await this.productService.deleteById(id);
 		if (!deletedProduct)
 			throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR);
-		return deletedProduct;
 	}
 
 	@Patch(':id')
