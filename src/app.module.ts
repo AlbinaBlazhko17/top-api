@@ -9,7 +9,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { getMongoConfig } from './configs/mongo.config';
 import { FilesModule } from './files/files.module';
-import { FilesController } from './dockerfile/files/files.controller';
+import { SitemapModule } from './sitemap/sitemap.module';
 
 @Module({
 	imports: [
@@ -24,8 +24,9 @@ import { FilesController } from './dockerfile/files/files.controller';
 		ProductModule,
 		ReviewModule,
 		FilesModule,
+		SitemapModule,
 	],
-	controllers: [AppController, FilesController],
+	controllers: [AppController],
 	providers: [AppService],
 })
 export class AppModule {}

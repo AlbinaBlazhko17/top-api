@@ -66,6 +66,9 @@ export class TopPageModel {
 
 	@Prop()
 	createdAt?: Date;
+
+	@Prop()
+	updatedAt?: Date;
 }
 
 export const TopPageModelSchema = SchemaFactory.createForClass(TopPageModel);

@@ -23,6 +23,10 @@ export class TopPageService {
 		return this.topPageModel.findOne({ alias }).exec();
 	}
 
+	async findAll(): Promise<CreateTopPageDto[]> {
+		return this.topPageModel.find({}).exec();
+	}
+
 	async findByCategory(firstCategory: TopLevelCategory) {
 		return this.topPageModel
 			.aggregate([
@@ -44,7 +48,7 @@ export class TopPageService {
 	async findByText(text: string) {
 		return this.topPageModel
 			.find({
-				'$**': 'text',
+				'$**': `${text}`,
 			})
 			.exec();
 	}

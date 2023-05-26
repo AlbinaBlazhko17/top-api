@@ -70,4 +70,8 @@ export class CreateTopPageDto {
 	@IsOptional()
 	@IsDateString()
 	createdAt?: Date;
+
+	@IsOptional()
+	@IsDateString()
+	updatedAt?: Date;
 }
