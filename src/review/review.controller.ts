@@ -33,14 +33,14 @@ export class ReviewController {
 	}
 
 	@UsePipes(new ValidationPipe())
-	@Post('create')
+	@Post('notify')
 	async notify(@Body() dto: CreateReviewDto): Promise<void> {
 		const message =
 			`Name: ${dto.name}\n` +
-			`Title: ${dto.title}` +
-			`Description: ${dto.description}` +
-			`Rating: ${dto.rating}` +
-			`Product ID: ${dto.productId}`;
+			`Title: ${dto.title}\n` +
+			`Description: ${dto.description}\n` +
+			`Rating: ${dto.rating}\n` +
+			`Product ID: ${dto.productId}\n`;
 		return this.telegramService.sendMessage(message);
 	}
 
